@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anushka Katiyar | Software Developer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f1f5f9;
+      scroll-behavior: smooth;
+      background: #0f172a;
+      background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
+      background-size: 40px 40px;
+      animation: gridMove 30s linear infinite;
+    }
+    @keyframes gridMove {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 100px 100px;
+      }
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      animation: fadeIn 1.2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      animation: slideDown 1s ease-in-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #38bdf8;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #facc15;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    h2 {
+      color: #38bdf8;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .skills ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0;
+      list-style: none;
+    }
+    .skills li {
+      background: #1e293b;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .skills li:hover {
+      transform: scale(1.05);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: #facc15;
+    }
+    .project-card a {
+      color: #38bdf8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .project-card a:hover {
+      color: #facc15;
+    }
+    .contact a {
+      color: #38bdf8;
+      display: block;
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact a:hover {
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="img/profile.jpg" alt="Anushka Profile Photo">
+      <h1>Anushka Katiyar</h1>
+      <p>Software Developer | Problem Solver | Tech Enthusiast</p>
+      <nav>
+        <a href="mailto:katiyar.anushka05@gmail.com">Email</a>
+        <a href="https://github.com/anushka52023" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank">LinkedIn</a>
+      </nav>
+    </header>
+
+    <section class="skills">
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>JavaScript</li>
+        <li>C++</li>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>SQL</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Mango Health Prediction</h3>
+          <p>Developed an ML-based tool to assess mango tree health using soil/stem data, integrated with a mobile app used by 30+ farmers for real-time insights.</p>
+          <a href="https://github.com/anushka52023" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project-card">
+          <h3>Cropify</h3>
+          <p>Built a crop yield prediction app using machine learning. It analyzes environmental and historical data to guide farmers on planting strategies.</p>
+          <a href="https://github.com/anushka52023" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Salesforce Agentblazer Champion</li>
+        <li>HackerRank – Problem Solving, CSS, Python</li>
+        <li>Infosys Springboard – HTML5, CSS3, DBMS</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact">
+        <a href="mailto:katiyar.anushka05@gmail.com">katiyar.anushka05@gmail.com</a>
+        <a href="tel:+919301321920">+91 9301321920</a>
+        <a href="https://github.com/anushka52023" target="_blank">GitHub: anushka52023</a>
+        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank">LinkedIn: Anushka Katiyar</a>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
