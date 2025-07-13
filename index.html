@@ -4,46 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anushka Katiyar | Software Developer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #f1f5f9;
-      scroll-behavior: smooth;
       background: #0f172a;
       background-image: radial-gradient(circle at 1px 1px, #334155 1px, transparent 0);
       background-size: 40px 40px;
-      animation: gridMove 30s linear infinite;
+      animation: gridMove 30s linear infinite, bgPulse 10s ease-in-out infinite alternate;
+      overflow-x: hidden;
     }
     @keyframes gridMove {
-      from {
-        background-position: 0 0;
-      }
-      to {
-        background-position: 100px 100px;
-      }
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
+    @keyframes bgPulse {
+      0% { background-color: #0f172a; }
+      100% { background-color: #1e293b; }
     }
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 20px;
-      animation: fadeIn 1.2s ease-in;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     header {
       text-align: center;
       padding: 60px 20px 40px;
-      animation: slideDown 1s ease-in-out;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     header img {
       width: 120px;
@@ -56,22 +50,54 @@
     header h1 {
       font-size: 3rem;
       margin: 0;
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes textGlow {
+      from { text-shadow: 0 0 10px #38bdf8; }
+      to { text-shadow: 0 0 20px #facc15; }
     }
     header p {
       font-size: 1.2rem;
       color: #94a3b8;
     }
+    nav {
+      margin-top: 10px;
+    }
     nav a {
       margin: 0 10px;
       text-decoration: none;
       color: #38bdf8;
+      position: relative;
       transition: color 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2px;
+      background-color: #facc15;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease-in-out;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     nav a:hover {
       color: #facc15;
     }
     section {
       margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h2 {
       color: #38bdf8;
@@ -90,10 +116,11 @@
       padding: 10px 20px;
       border-radius: 5px;
       font-size: 1rem;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .skills li:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #38bdf8;
     }
     .projects {
       display: grid;
@@ -125,15 +152,47 @@
     }
     .contact a {
       color: #38bdf8;
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 8px;
       text-decoration: none;
+      font-size: 1rem;
       transition: color 0.3s;
     }
     .contact a:hover {
       color: #facc15;
     }
-  </style>
+  @media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+  }
+  nav a {
+    display: block;
+    margin: 8px 0;
+  }
+  .skills ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .project-card {
+    padding: 15px;
+  }
+  .contact a {
+    font-size: 0.95rem;
+  }
+  .projects {
+    grid-template-columns: 1fr;
+  }
+  header img {
+    width: 100px;
+    height: 100px;
+  }
+}
+</style>
 </head>
 <body>
   <div class="container">
@@ -142,14 +201,14 @@
       <h1>Anushka Katiyar</h1>
       <p>Software Developer | Problem Solver | Tech Enthusiast</p>
       <nav>
-        <a href="mailto:katiyar.anushka05@gmail.com">Email</a>
-        <a href="https://github.com/anushka52023" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank">LinkedIn</a>
+        <a href="mailto:katiyar.anushka05@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://github.com/anushka52023" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       </nav>
     </header>
 
     <section class="skills">
-      <h2>Tech Stack</h2>
+      <h2><i class="fas fa-laptop-code"></i> Tech Stack</h2>
       <ul>
         <li>Python</li>
         <li>Java</li>
@@ -163,39 +222,67 @@
     </section>
 
     <section>
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="project-card">
-          <h3>Mango Health Prediction</h3>
-          <p>Developed an ML-based tool to assess mango tree health using soil/stem data, integrated with a mobile app used by 30+ farmers for real-time insights.</p>
-          <a href="https://github.com/anushka52023" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project-card">
-          <h3>Cropify</h3>
-          <p>Built a crop yield prediction app using machine learning. It analyzes environmental and historical data to guide farmers on planting strategies.</p>
-          <a href="https://github.com/anushka52023" target="_blank">View on GitHub</a>
-        </div>
-      </div>
+  <h2><i class="fas fa-folder-open"></i> Projects</h2>
+  <div class="projects">
+    <div class="project-card">
+      <h3>Mango Health Prediction</h3>
+      <p>Developed an ML-based tool to assess mango tree health using soil/stem data, integrated with a mobile app used by 30+ farmers for real-time insights.</p>
+      <a href="https://github.com/anushka52023" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Cropify</h3>
+      <p>Built a crop yield prediction app using machine learning. It analyzes environmental and historical data to guide farmers on planting strategies.</p>
+      <a href="https://github.com/anushka52023/cropify" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Musscap</h3>
+      <p>A music recommendation platform that customizes playlists based on user emotion and listening history, built using Python and sentiment analysis APIs.</p>
+      <a href="https://github.com/anushka52023/musscap" target="_blank">View on GitHub</a>
+    </div>
+    <div class="project-card">
+      <h3>Blood Brigade</h3>
+      <p>A blood donation management system designed to connect donors with recipients in emergency scenarios using real-time geolocation and alerts.</p>
+      <a href="https://github.com/anushka52023/blood-brigade" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+    <section>
+  <h2><i class="fas fa-certificate"></i> Certifications</h2>
+  <ul>
+    <li>Salesforce – <span style="display: inline-flex; gap: 10px; margin-left: 10px;"><a href="img/salesforce-cert.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">Agentblazer Champion</a></span></li>
+    <li>AWS – <span style="display: inline-flex; gap: 10px; margin-left: 10px;"><a href="img/aws-ai-cert.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">AI Certificate</a></span></li>
+    <li>HackerRank – <span style="display: inline-flex; gap: 10px; margin-left: 10px;"><a href="img/hackerrank-problem-solving.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">Problem Solving</a><a href="img/hackerrank-css.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">CSS</a><a href="img/hackerrank-python.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">Python</a></span>
+    </li>
+    <li>Infosys Springboard – <span style="display: inline-flex; gap: 10px; margin-left: 10px;"><a href="img/infosys-html5.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">HTML5</a><a href="img/infosys-css3.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">CSS3</a><a href="img/infosys-dbms.jpg" target="_blank" style="background: #1e293b; padding: 4px 10px; border-radius: 5px; color: #f1f5f9; text-decoration: none;">DBMS</a></span></li>
+  </ul>
+</section>
+</section>
     </section>
 
     <section>
-      <h2>Certifications</h2>
-      <ul>
-        <li>Salesforce Agentblazer Champion</li>
-        <li>HackerRank – Problem Solving, CSS, Python</li>
-        <li>Infosys Springboard – HTML5, CSS3, DBMS</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
+      <h2><i class="fas fa-address-book"></i> Contact</h2>
       <div class="contact">
-        <a href="mailto:katiyar.anushka05@gmail.com">katiyar.anushka05@gmail.com</a>
-        <a href="tel:+919301321920">+91 9301321920</a>
-        <a href="https://github.com/anushka52023" target="_blank">GitHub: anushka52023</a>
-        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank">LinkedIn: Anushka Katiyar</a>
+        <a href="mailto:katiyar.anushka05@gmail.com"><i class="fas fa-envelope"></i> katiyar.anushka05@gmail.com</a><br>
+        <a href="tel:+919301321920"><i class="fas fa-phone"></i> +91 9301321920</a><br>
+        <a href="https://github.com/anushka52023" target="_blank"><i class="fab fa-github"></i> GitHub: anushka52023</a><br>
+        <a href="https://linkedin.com/in/anushka-katiyar-0398a9259" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn: Anushka Katiyar</a>
       </div>
     </section>
   </div>
+  <script>
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
